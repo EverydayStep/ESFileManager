@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "ESFileManager.h"
+
 
 @interface AppDelegate ()
 
@@ -16,7 +18,10 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    NSString *document = [ESFileManager pathForDocumentsDirectory];
+    NSLog(@"%@",document);
+    NSArray *path = [ESFileManager listFilesInDirectoryAtPath:document withExtension:@"png" deep:YES];
+    NSLog(@"%@",path);
     return YES;
 }
 

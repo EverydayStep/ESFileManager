@@ -305,7 +305,7 @@
 
 +(NSArray *)listFilesInDirectoryAtPath:(NSString *)path deep:(BOOL)deep
 {
-    NSArray *subpaths = [self listItemsInDirectoryAtPath:path deep:NO];
+    NSArray *subpaths = [self listItemsInDirectoryAtPath:path deep:deep];
     
     return [subpaths filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
         
@@ -324,7 +324,7 @@
 
 +(NSArray *)listFilesInDirectoryAtPath:(NSString *)path withExtension:(NSString *)extension deep:(BOOL)deep
 {
-    NSArray *subpaths = [self listFilesInDirectoryAtPath:path];
+    NSArray *subpaths = [self listFilesInDirectoryAtPath:path deep:deep];
     
     return [subpaths filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
         
@@ -345,7 +345,7 @@
 
 +(NSArray *)listFilesInDirectoryAtPath:(NSString *)path withPrefix:(NSString *)prefix deep:(BOOL)deep
 {
-    NSArray *subpaths = [self listFilesInDirectoryAtPath:path];
+    NSArray *subpaths = [self listFilesInDirectoryAtPath:path deep:deep];
     
     return [subpaths filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
         
@@ -364,7 +364,7 @@
 
 +(NSArray *)listFilesInDirectoryAtPath:(NSString *)path withSuffix:(NSString *)suffix deep:(BOOL)deep
 {
-    NSArray *subpaths = [self listFilesInDirectoryAtPath:path];
+    NSArray *subpaths = [self listFilesInDirectoryAtPath:path deep:deep];
     
     return [subpaths filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
         
@@ -391,7 +391,6 @@
     
     return [NSArray arrayWithArray:absoluteSubpaths];
 }
-
 
 +(BOOL)moveItemAtPath:(NSString *)path toPath:(NSString *)toPath
 {
